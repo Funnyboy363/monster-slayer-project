@@ -81,7 +81,7 @@ monsterAttacks: function() {
                 } else {
                     this.gameIsRunning = false;
                 }
-                return;
+                return true;
             } else if (this.playerHealth <= 0) {
                 if (confirm('You lost! New Game?')) {
                     this.startGame();
