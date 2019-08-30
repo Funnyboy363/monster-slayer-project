@@ -8,9 +8,22 @@
 </head>
 <body>
 <div id="app">
+        <section class="row controls" v-if="!gameIsRunning">
+                <div class="small-12 columns">
+                    <button id="start-game" @click="startGame">START NEW GAME</button>
+                </div>
+            </section>
+            <section class="row controls" v-else>
+                <div class="small-12 columns">
+                    <button id="attack" @click="attack">ATTACK</button>
+                    <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+                    <button id="heal" @click="heal">HEAL</button>
+                    <button id="give-up" @click="giveUp">GIVE UP</button>
+                </div>
+            </section>
     <section class="row">
         <div class="small-6 columns">
-            <h1 class="text-center">YOU</h1>
+            <h1 class="text-center">HERO</h1>
             <div 
             class="healthbar">
                 <div 
@@ -30,19 +43,6 @@
 {{ monsterHealth }}
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="row controls" v-if="!gameIsRunning">
-        <div class="small-12 columns">
-            <button id="start-game" @click="startGame">START NEW GAME</button>
-        </div>
-    </section>
-    <section class="row controls" v-else>
-        <div class="small-12 columns">
-            <button id="attack" @click="attack">ATTACK</button>
-            <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
-            <button id="heal" @click="heal">HEAL</button>
-            <button id="give-up" @click="giveUp">GIVE UP</button>
         </div>
     </section>
     <section class="row log" v-if="turns.length > 0">

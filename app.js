@@ -6,12 +6,13 @@ new Vue ({
     gameIsRunning: false,
     turns: []
     },
+
     methods: {
         startGame: function() {
             this.gameIsRunning = true,
             this.playerHealth = 100;
             this.monsterHealth = 100;
-            this.turns = [];
+            this.turns =[];
         },
         attack: function () {
             var damage = this.calculateDamage(3, 10);
@@ -28,7 +29,7 @@ new Vue ({
 
         },
         specialAttack: function () {
-            var damage = this.calculateDamage(10, 20);
+            var damage = this.calculateDamage(11, 15);
             this.monsterHealth -= damage;
             this.turns.unshift({
                 isPlayer: true,
@@ -46,22 +47,27 @@ new Vue ({
         },
         heal: function () {
             if (this.playerHealth <= 90) {
-                this.playerHealth += 10;
+                this.playerHealth += damage;
             } else {
                 this.playerHealth = 100;
             }
             this.turns.unshift({
                 isPlayer: true,
-                text: 'Player heals for 10'
+                text: 'Player heals for 15',
+                
             });
+
             this.monsterAttacks();
         },
+
+
+
         giveUp: function () {
             this.gameIsRunning = false;
         },
 
 monsterAttacks: function() {
-    var damage = this.calculateDamage(5, 12);
+    var damage = this.calculateDamage(5, 15);
     this.playerHealth -= damage;
     this.checkWin();
     this.turns.unshift({
